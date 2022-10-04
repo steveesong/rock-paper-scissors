@@ -1,4 +1,5 @@
 <script>
+    function getComputerChoice() {    
         function randomNumber(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
@@ -8,10 +9,28 @@
         let random = randomNumber(1, 3);
         
         if (random === 3) {
-            console.log("rock");
+            console.log("Rock");
         } else if (random === 2) {
-            console.log("paper");
+            console.log("Paper");
         } else if (random === 1) {
-            console.log("scissors");
+            console.log("Scissors");
         }
+    }
+    
+    function playerSelection() {
+        let answer = prompt("Please enter your choice of rock, paper, or scissors!")
+        let letterconversion = answer.toLowerCase();
+
+            if (letterconversion === 'rock') {
+                console.log('Rock');
+            } else if (letterconversion === 'paper') {
+                console.log('Paper');
+            } else if (letterconversion === 'scissors') {
+                console.log('Scissors')
+            } else {
+                console.log('Please enter Rock, Paper, or Scissors!')
+            }
+    }
+
+    console.log(playerSelection());
 </script>
