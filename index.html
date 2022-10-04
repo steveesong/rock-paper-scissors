@@ -1,4 +1,20 @@
 <script>
+    
+    function choice(answer) {
+        answer = prompt("Please enter your choice of rock, paper, or scissors!")
+        let letterconversion = answer.toLowerCase();
+
+            if (letterconversion === 'rock') {
+                return 'Rock';
+            } else if (letterconversion === 'paper') {
+                return 'Paper';
+            } else if (letterconversion === 'scissors') {
+                return 'Scissors';
+            } else {
+                return 'Please enter Rock, Paper, or Scissors!';
+            }
+    }
+    
     function getComputerChoice() {    
         function randomNumber(min, max) {
             min = Math.ceil(min);
@@ -9,28 +25,44 @@
         let random = randomNumber(1, 3);
         
         if (random === 3) {
-            console.log("Rock");
+            return "Rock";
         } else if (random === 2) {
-            console.log("Paper");
+            return "Paper";
         } else if (random === 1) {
-            console.log("Scissors");
+            return "Scissors";
         }
     }
-    
-    function playerSelection() {
-        let answer = prompt("Please enter your choice of rock, paper, or scissors!")
-        let letterconversion = answer.toLowerCase();
+    console.log(getComputerChoice());
 
-            if (letterconversion === 'rock') {
-                console.log('Rock');
-            } else if (letterconversion === 'paper') {
-                console.log('Paper');
-            } else if (letterconversion === 'scissors') {
-                console.log('Scissors')
-            } else {
-                console.log('Please enter Rock, Paper, or Scissors!')
-            }
+    function playRound(x, y) {
+
+        if (x =='Rock' && y =='Paper') {
+            return 'You Lose! Paper beats Rock.';
+        } else if (x =='Rock' && y =='Scissors') {
+            return 'You Win! Rock beats Scissors!';
+        } else if (x =='Paper' && y =='Scissors') {
+            return 'You Lose! Scissors beats Paper.';
+        } else if (x =='Paper' && y =='Rock') {
+            return 'You Win! Paper beats Rock!';
+        } else if (x =='Scissors' && y =='Rock') {
+            return 'You Lose! Rock beats Scissors.';
+        } else if (x =='Scissors' && y =='Paper') {
+            return 'You Win! Scissors beats Paper!';
+        } else if (x =='Scissors' && y =='Scissors') {
+            return 'You tied!';
+        } else if (x =='Rock' && y =='Rock') {
+            return 'You tied!';
+        } else if (x =='Paper' && y =='Paper') {
+            return 'You tied!';    
+        } else {
+            return 'Please pick Rock, Paper, or Scissors!';
+        }   
     }
 
-    console.log(playerSelection());
+    const computerSelection = getComputerChoice();
+    const playerSelection = choice();
+
+    console.log(playRound(playerSelection, computerSelection));
+    
+
 </script>
