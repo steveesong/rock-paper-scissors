@@ -4,11 +4,6 @@ let winCounter = 0;
 let lossCounter = 0;
 let tieCounter = 0; 
 
-for (let i = 0; i < 9; i++) {
-
-    function choice() {
-        answer = input;
-
     function getComputerChoice() {    
         function randomNumber(min, max) {
             min = Math.ceil(min);
@@ -27,7 +22,7 @@ for (let i = 0; i < 9; i++) {
         }
     }
 
-    function playRound(x, y) {
+    function playRound(playerSelection, y) {
 
         if (x =='Rock' && y =='Paper') {
             return 'You Lose! Paper beats Rock.';
@@ -47,14 +42,11 @@ for (let i = 0; i < 9; i++) {
             return 'You tied!';
         } else if (x =='Paper' && y =='Paper') {
             return 'You tied!';    
-        } else {
-            return 'Please pick Rock, Paper, or Scissors!';
         }   
     }
 
     const computerSelection = getComputerChoice();
-    const playerSelection = choice();
-    console.log(playRound(playerSelection, computerSelection));
+    //console.log(playRound(playerSelection, computerSelection));
 
     if (playerSelection == 'Rock' && computerSelection == 'Scissors' || 
         playerSelection == 'Paper' && computerSelection == 'Rock' ||
@@ -67,12 +59,12 @@ for (let i = 0; i < 9; i++) {
     } else if (playerSelection == computerSelection) {
             tieCounter++;
     }
-    if (winCounter === 3) {
+    if (winCounter === 5) {
         console.log("You Win the match!");
         break;
-    } else if (lossCounter === 3) {
+    } else if (lossCounter === 5) {
         console.log("You've lost the match!");
         break;
     }
-}  
+
 console.log(`Wins: ${winCounter} "Losses: ${lossCounter} Ties: ${tieCounter}`);
