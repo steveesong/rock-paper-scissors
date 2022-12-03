@@ -1,4 +1,4 @@
-const rock = document.querySelector('#rock');
+const buttons = document.querySelectorAll('input');
 
 let winCounter = 0;
 let lossCounter = 0;
@@ -6,20 +6,8 @@ let tieCounter = 0;
 
 for (let i = 0; i < 9; i++) {
 
-    function choice(answer) {
-    answer = 
-    let letterconversion = answer.toLowerCase();
-
-        if (letterconversion === 'rock') {
-            return 'Rock';
-        } else if (letterconversion === 'paper') {
-            return 'Paper';
-        } else if (letterconversion === 'scissors') {
-            return 'Scissors';
-        } else {
-            return 'Please enter Rock, Paper, or Scissors!';
-        }
-    }
+    function choice() {
+        answer = input;
 
     function getComputerChoice() {    
         function randomNumber(min, max) {
