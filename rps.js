@@ -1,70 +1,81 @@
-const buttons = document.querySelectorAll('input');
-
 let winCounter = 0;
 let lossCounter = 0;
-let tieCounter = 0; 
+let tieCounter = 0;
 
-    function getComputerChoice() {    
-        function randomNumber(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
+function rock() {
+    playRound('Rock', getComputerChoice());
+    const score = document.querySelector('#score');
+    score.textContent = "Wins:  " + winCounter + "  Losses:  " + lossCounter + "  Ties:  " + tieCounter;
 
-        let random = randomNumber(1, 3);
-        
-        if (random === 3) {
-            return "Rock";
-        } else if (random === 2) {
-            return "Paper";
-        } else if (random === 1) {
-            return "Scissors";
-        }
+}
+
+function paper() {
+    playRound('Paper', getComputerChoice());
+    const score = document.querySelector('#score');
+    score.textContent = "Wins:  " + winCounter + "  Losses:  " + lossCounter + "  Ties:  " + tieCounter;
+}
+
+function scissors() {
+    playRound('Paper', getComputerChoice());
+    const score = document.querySelector('#score');
+    score.textContent = "Wins:  " + winCounter + "  Losses:  " + lossCounter + "  Ties:  " + tieCounter;
+}
+
+
+function getComputerChoice() {
+    function randomNumber(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    function playRound(playerSelection, y) {
+    let random = randomNumber(1, 3);
 
-        if (x =='Rock' && y =='Paper') {
-            return 'You Lose! Paper beats Rock.';
-        } else if (x =='Rock' && y =='Scissors') {
-            return 'You Win! Rock beats Scissors!';
-        } else if (x =='Paper' && y =='Scissors') {
-            return 'You Lose! Scissors beats Paper.';
-        } else if (x =='Paper' && y =='Rock') {
-            return 'You Win! Paper beats Rock!';
-        } else if (x =='Scissors' && y =='Rock') {
-            return 'You Lose! Rock beats Scissors.';
-        } else if (x =='Scissors' && y =='Paper') {
-            return 'You Win! Scissors beats Paper!';
-        } else if (x =='Scissors' && y =='Scissors') {
-            return 'You tied!';
-        } else if (x =='Rock' && y =='Rock') {
-            return 'You tied!';
-        } else if (x =='Paper' && y =='Paper') {
-            return 'You tied!';    
-        }   
+    if (random === 3) {
+        return "Rock";
+    } else if (random === 2) {
+        return "Paper";
+    } else if (random === 1) {
+        return "Scissors";
     }
+}
 
-    const computerSelection = getComputerChoice();
-    //console.log(playRound(playerSelection, computerSelection));
 
-    if (playerSelection == 'Rock' && computerSelection == 'Scissors' || 
-        playerSelection == 'Paper' && computerSelection == 'Rock' ||
-        playerSelection == 'Scissors' && computerSelection == 'Paper') {
-            winCounter++;
-    } else if (playerSelection == 'Rock' && computerSelection == 'Paper' || 
-            playerSelection == 'Paper' && computerSelection == 'Scissors' ||
-            playerSelection == 'Scissors' && computerSelection == 'Rock') {
-            lossCounter++;
-    } else if (playerSelection == computerSelection) {
-            tieCounter++;
+
+function playRound(x, y) {
+
+    if (x == 'Rock' && y == 'Paper') {
+        lossCounter++;
+        return 'You Lose! Paper beats Rock.';
+    } else if (x == 'Rock' && y == 'Scissors') {
+        winCounter++;
+        return 'You Win! Rock beats Scissors!';
+    } else if (x == 'Paper' && y == 'Scissors') {
+        lossCounter++;
+        return 'You Lose! Scissors beats Paper.';
+    } else if (x == 'Paper' && y == 'Rock') {
+        winCounter++;
+        return 'You Win! Paper beats Rock!';
+    } else if (x == 'Scissors' && y == 'Rock') {
+        lossCounter++;
+        return 'You Lose! Rock beats Scissors.';
+    } else if (x == 'Scissors' && y == 'Paper') {
+        winCounter++;
+        return 'You Win! Scissors beats Paper!';
+    } else if (x == 'Scissors' && y == 'Scissors') {
+        tieCounter++;
+        return 'You tied!';
+    } else if (x == 'Rock' && y == 'Rock') {
+        tieCounter++;
+        return 'You tied!';
+    } else if (x == 'Paper' && y == 'Paper') {
+        tieCounter++;
+        return 'You tied!';
     }
-    if (winCounter === 5) {
-        console.log("You Win the match!");
-        break;
-    } else if (lossCounter === 5) {
-        console.log("You've lost the match!");
-        break;
-    }
+}
 
-console.log(`Wins: ${winCounter} "Losses: ${lossCounter} Ties: ${tieCounter}`);
+//const computerSelection = getComputerChoice();
+//console.log(playRound(playerSelection, computerSelection));
+
+
+//console.log(`Wins: ${winCounter} "Losses: ${lossCounter} Ties: ${tieCounter}`);
