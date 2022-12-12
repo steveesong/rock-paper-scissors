@@ -16,7 +16,7 @@ function paper() {
 }
 
 function scissors() {
-    playRound('Paper', getComputerChoice());
+    playRound('Scissors', getComputerChoice());
     const score = document.querySelector('#score');
     score.textContent = "Wins:  " + winCounter + "  Losses:  " + lossCounter + "  Ties:  " + tieCounter;
 }
